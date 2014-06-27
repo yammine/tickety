@@ -1,0 +1,5 @@
+.well.col-xs-12.col-md-6
+  = simple_form_for @ticket, class: "form-horizontal" do |f|
+    = f.input :title, class: "edit-ticket-title-input"
+    = f.input :description, class: "edit-ticket-description-input"
+    = f.submit "Submit Ticket", class: "btn btn-info"

@@ -1,0 +1,4 @@
+= simple_form_for @ticket, class: "form-horizontal", remote: true do |f|
+  = f.input :title, class: "ticket-title-input"
+  = f.input :description, class: "ticket-description-input"
+  = f.submit "Submit Ticket", class: "btn btn-primary"

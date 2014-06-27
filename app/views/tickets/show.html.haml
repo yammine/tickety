@@ -1,0 +1,13 @@
+= link_to "Back", root_path, class: "btn btn-primary getaway"
+.row
+  .well.col-xs-12.col-md-8.col-md-offset-2
+    %h1= @ticket.title
+    %p= @ticket.description
+    %hr
+    - if @ticket.status == false
+      = link_to "Mark Resolved", [@ticket, ticket: { status: true }], method: :patch, data: { confirm: "Are you sure?" }, class: "btn btn-warning"
+    - else
+      = link_to "Mark Un-Resolved", [@ticket, ticket: { status: false }], method: :patch, data: { confirm: "Are you sure?" }, class: "btn btn-success"
+    = link_to "Edit", edit_ticket_path(@ticket), class: "btn btn-info"
+    = link_to "Delete", @ticket, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"
+

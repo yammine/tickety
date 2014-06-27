@@ -1,0 +1,8 @@
+- if @ticket.errors.any?
+  $("#modal-errors").html("#{ j render partial: "/shared/standard_errors", locals: { object: @ticket } }")
+- else
+  $newTicket = "#{ j render partial: "tickets/ticket", locals: { ticket: @ticket } }";
+  $(".tickets").prepend($newTicket);
+  $("#newTicket").modal("hide");
+  $("#modal-errors").html("");
+

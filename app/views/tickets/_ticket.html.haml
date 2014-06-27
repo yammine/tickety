@@ -1,0 +1,13 @@
+.well{id: dom_id(ticket)}
+  %h2= link_to ticket.title, ticket
+  %p=  ticket.description 
+  %hr
+  .row
+    .col-xs-6.col-md-6
+      - if ticket.status == false
+        = render partial: "mark_resolved_button", locals: { ticket: ticket }
+      - else
+        = render partial: "mark_unresolved_button", locals: { ticket: ticket }
+    .col-xs-6.col-md-6.pull-right
+      - if ticket.user.present?
+        .pull-right.teenyweeny= ticket.user.full_name

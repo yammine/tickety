@@ -1,0 +1,7 @@
+- if @ticket.status == true 
+  $("##{dom_id(@ticket)} .status").remove();
+  $("##{dom_id(@ticket)}").append("#{ j render partial: "mark_unresolved_button", locals: { ticket: @ticket } }");
+- elsif @ticket.status == false
+  $("##{dom_id(@ticket)} .status").remove();
+  $("##{dom_id(@ticket)}").append("#{ j render partial: "mark_resolved_button", locals: { ticket: @ticket } }")
+  

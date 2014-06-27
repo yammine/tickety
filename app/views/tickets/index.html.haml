@@ -1,0 +1,23 @@
+.row
+  .col-xs-12.col-md-9
+    %h1 Tickety
+    %hr
+    - if user_signed_in?
+      = link_to "Create New Ticket", new_ticket_path, class: "btn btn-primary getaway", data: { toggle: "modal", target: "#newTicket" }, remote: true
+    - else
+      %small You must be signed in to create a new ticket!
+      .clearfix
+      = link_to "Create New Ticket", "javascript:void(0);", class: "btn btn-primary disabled getaway"
+    .row.tickets
+      - @tickets.each do |ticket|
+        = render partial: "tickets/ticket", locals: { ticket: ticket }
+
+#newTicket.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newTicketLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
+        %h4#ticketLabel.modal-title New Ticket
+      #modal-errors.getaway
+      .modal-body
+      .modal-footer
